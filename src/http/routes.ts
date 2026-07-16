@@ -1,4 +1,4 @@
-import type { Express, NextFunction, Request, Response } from 'express';
+import type { Application, NextFunction, Request, Response } from 'express';
 import { matchMaker } from '@colyseus/core';
 import { asyncRoute } from './async-route';
 import { requireBridgeSecret } from './bridge-auth';
@@ -13,7 +13,7 @@ import type { SyncResponse } from '../rooms/WordWarsRoom';
 
 const ROOM_NAME = 'word_wars';
 
-export function registerHttpRoutes(app: Express): void {
+export function registerHttpRoutes(app: Application): void {
   app.get('/health', (_request: Request, response: Response) => {
     response.json({
       ok: true,

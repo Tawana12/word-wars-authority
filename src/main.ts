@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import { defineRoom, defineServer } from '@colyseus/core';
-import express, { type Express } from 'express';
+import express, { type Application } from 'express';
 import { registerHttpRoutes } from './http/routes';
 import { WordWarsRoom } from './rooms/WordWarsRoom';
 
@@ -10,7 +10,8 @@ const server = defineServer({
   rooms: {
     word_wars: defineRoom(WordWarsRoom).filterBy(['roomKey']),
   },
-  express: (app: Express) => {
+
+  express: (app: Application) => {
     app.use(express.json({ limit: '256kb' }));
     registerHttpRoutes(app);
   },
