@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: word-wars-authority
+    runtime: docker
+    plan: starter
+    healthCheckPath: /health
+    envVars:
+      - key: WORD_WARS_BRIDGE_SECRET
+        generateValue: true
+      - key: WORD_WARS_TICK_RATE
+        value: "20"
+      - key: WORD_WARS_SNAPSHOT_RATE
+        value: "10"
+      - key: WORD_WARS_IDLE_ROOM_MS
+        value: "180000"
